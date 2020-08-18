@@ -12,5 +12,9 @@ class PuppyPolicy < ApplicationPolicy
       return true
     end
 
+    def create?
+      return true
+    end
+
   end
 end

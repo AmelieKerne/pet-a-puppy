@@ -1,4 +1,5 @@
 class PuppiesController < ApplicationController
+before_action :set_puppy, only: [:show, :edit, :update, :destroy]
 
   def index
     @puppies = Puppy.all
@@ -6,12 +7,13 @@ class PuppiesController < ApplicationController
   end
 
   def show
-    @puppy = Puppy.find(params[:id])
     authorize @puppy
   end
 
   def new
     @puppy = Puppy.new
+    authorize @puppy
+
   end
 
   def create
@@ -20,9 +22,24 @@ class PuppiesController < ApplicationController
       redirect_to puppy_path(@puppy)
     else
       render 'new'
+    end
+  end
+
+  def edit
+    authorize @puppy
+  end
+
+  def update
+  if @puppy.update(puppy_params)
+  redirect_to puppy_path(@puppy)
+
   end
 
   private
+
+  def set_puppy
+    @puppy = Puppy.find(params[:id])
+  end
 
   def puppy_params
     params.require(:puppy).permit(:name, :description, :price)
