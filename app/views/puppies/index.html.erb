@@ -1,3 +1,14 @@
-<% if policy(Puppy).index? %>
+
+<h1>Pet a puppy, be happy!</h1>
+
+<%  @puppies.each do |puppy| %>
+    <%= link_to puppy.name, puppy_path(puppy) %>
+    <%= image_path 'cocktails.jpg' %>
+    <%= puppy.description %>
+    <%= puppy.price %>
+<% end %>
+
+
+<% if policy(Puppy).create? %>
   <%= link_to "New puppy", new_puppy_path %>
 <% end %>
