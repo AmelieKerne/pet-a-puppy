@@ -2,8 +2,7 @@ class PuppiesController < ApplicationController
 before_action :set_puppy, only: [:show, :edit, :update, :destroy]
 
   def index
-    @puppies = Puppy.all
-    authorize @puppy
+    @puppies = policy_scope(Puppy)
   end
 
   def show
@@ -17,6 +16,7 @@ before_action :set_puppy, only: [:show, :edit, :update, :destroy]
 
   def create
     @puppy = Puppy.new(puppy_params)
+    @puppy.user = current_user
     if @puppy.save
       redirect_to puppy_path(@puppy)
     else
@@ -29,10 +29,10 @@ before_action :set_puppy, only: [:show, :edit, :update, :destroy]
   end
 
   def update
-  if @puppy.update(puppy_params)
-  redirect_to puppy_path(@puppy)
-  else
-      render :edit
+    if @puppy.update(puppy_params)
+      redirect_to puppy_path(@puppy)
+    else
+        render :edit
     end
   end
 
@@ -50,5 +50,5 @@ before_action :set_puppy, only: [:show, :edit, :update, :destroy]
   def puppy_params
     params.require(:puppy).permit(:name, :description, :price, :photo)
   end
-
+  
 end
