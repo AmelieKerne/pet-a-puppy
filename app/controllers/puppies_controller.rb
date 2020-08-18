@@ -1,8 +1,7 @@
 class PuppiesController < ApplicationController
 
   def index
-    @puppies = Puppy.all
-    authorize @puppy
+    @puppies = policy_scope(Puppy)
   end
 
   def show
@@ -16,10 +15,12 @@ class PuppiesController < ApplicationController
 
   def create
     @puppy = Puppy.new(puppy_params)
+    @puppy.user = current_user
     if @puppy.save
       redirect_to puppy_path(@puppy)
     else
       render 'new'
+    end
   end
 
   private

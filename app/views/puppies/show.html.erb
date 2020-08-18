@@ -1,3 +1,7 @@
-<% if policy(Puppy).show? %>
+<h1><%= @puppy.name %></h1>
+
+<%= link_to "Back to all puppies", root_path %>
+
+<% if policy(Puppy).create? %>
   <%= link_to "New puppy", new_puppy_path %>
 <% end %>
