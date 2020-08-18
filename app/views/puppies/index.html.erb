@@ -1,14 +1,27 @@
+<div class="container">
 
-<h1>Pet a puppy, be happy!</h1>
+  <h1>Pet a puppy, be happy!</h1>
 
-<%  @puppies.each do |puppy| %>
-    <%= link_to puppy.name, puppy_path(puppy) %>
-    <%= image_path 'cocktails.jpg' %>
-    <%= puppy.description %>
-    <%= puppy.price %>
-<% end %>
+  <div class="cards">
+
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+              <p class="card-text"> <%  @puppies.each do |puppy| %>
+                  <%= link_to puppy.name, puppy_path(puppy) %>
+                  <!-- <%= image_path '' %> -->
+              <% end %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% if policy(Puppy).create? %>
+    <%= link_to "New puppy", new_puppy_path %>
+  <% end %>
+</div>
 
 
-<% if policy(Puppy).create? %>
-  <%= link_to "New puppy", new_puppy_path %>
-<% end %>
+<!-- <cl image_tag> -->
