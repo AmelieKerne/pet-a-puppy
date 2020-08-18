@@ -20,6 +20,7 @@ class PuppiesController < ApplicationController
       redirect_to puppy_path(@puppy)
     else
       render 'new'
+    end
   end
 
   private

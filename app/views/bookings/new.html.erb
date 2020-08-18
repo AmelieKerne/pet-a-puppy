@@ -1,6 +1,15 @@
+<div class="container">
+
+<h1>Book your pet-a-puppy session</h1>
 
 <%= simple_form_for [ @puppy, @booking ] do |f| %>
-<%= f.input :start_date, as: :date %>
-<%= f.input :end_date, as: :date %>
+<div class="row">
+<%= f.input :start_date, as: :date, html5: true %>
+
+</div>
+<div class="row">
+<%= f.input :end_date, as: :date, html5: true %>
+</div>
 <%= f.submit class: "btn btn-primary" %>
 <% end %>
+</div>
