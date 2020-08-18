@@ -3,6 +3,9 @@
 
 <%  @puppies.each do |puppy| %>
     <%= link_to puppy.name, puppy_path(puppy) %>
+    <%= image_path 'cocktails.jpg' %>
+    <%= puppy.description %>
+    <%= puppy.price %>
 <% end %>
 
 
