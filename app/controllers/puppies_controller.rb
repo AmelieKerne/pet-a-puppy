@@ -13,7 +13,6 @@ before_action :set_puppy, only: [:show, :edit, :update, :destroy]
   def new
     @puppy = Puppy.new
     authorize @puppy
-
   end
 
   def create
@@ -32,7 +31,14 @@ before_action :set_puppy, only: [:show, :edit, :update, :destroy]
   def update
   if @puppy.update(puppy_params)
   redirect_to puppy_path(@puppy)
+  else
+      render :edit
+    end
+  end
 
+  def destroy
+    @puppy.destroy
+    redirect_to root
   end
 
   private
@@ -42,7 +48,7 @@ before_action :set_puppy, only: [:show, :edit, :update, :destroy]
   end
 
   def puppy_params
-    params.require(:puppy).permit(:name, :description, :price)
+    params.require(:puppy).permit(:name, :description, :price, :photo)
   end
 
 end

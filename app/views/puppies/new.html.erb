@@ -4,7 +4,9 @@
 <%= simple_form_for (@puppy) do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
-  <%= f.input :prize %>
+  <%= f.input :price %>
+  <%= f.label "Add puppy photo" %>
+  <%= f.input :photo, as: :file %>
 
   <%= f.submit class: "btn btn-primary" %>
 <% end %>

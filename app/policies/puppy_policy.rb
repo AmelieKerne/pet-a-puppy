@@ -3,6 +3,7 @@ class PuppyPolicy < ApplicationPolicy
     def resolve
       scope.all
     end
+  end
 
     def index?
       return true
@@ -16,5 +17,11 @@ class PuppyPolicy < ApplicationPolicy
       return true
     end
 
-  end
+    def update?
+      user = record.user
+    end
+
+    def destroy?
+      user = record.user
+    end
 end
