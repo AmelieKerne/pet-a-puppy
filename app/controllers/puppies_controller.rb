@@ -38,7 +38,7 @@ before_action :set_puppy, only: [:show, :edit, :update, :destroy]
 
   def destroy
     @puppy.destroy
-    redirect_to root
+    redirect_to root_path
   end
 
   private
@@ -50,5 +50,5 @@ before_action :set_puppy, only: [:show, :edit, :update, :destroy]
   def puppy_params
     params.require(:puppy).permit(:name, :description, :price, :photo)
   end
-  
+
 end

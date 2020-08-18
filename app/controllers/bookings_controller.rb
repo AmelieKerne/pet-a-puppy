@@ -9,9 +9,10 @@ class BookingsController < ApplicationController
   def create
     @puppy = Puppy.find(params[:puppy_id])
     @booking = Booking.new(booking_params)
+    @booking.user = current_user
     authorize @booking
     @booking.puppy = @puppy
-    if @booking.save
+    if @booking.save!
       redirect_to puppy_path(@puppy)
     else
       render :new
