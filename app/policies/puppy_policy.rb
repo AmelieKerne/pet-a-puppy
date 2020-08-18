@@ -7,6 +7,7 @@ class PuppyPolicy < ApplicationPolicy
 
   def index?
     return true
+    # this is halloween
   end
 
   def show?
