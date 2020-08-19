@@ -1,4 +1,12 @@
 class BookingsController < ApplicationController
+  def index
+    @bookings = Booking.all
+  end
+
+  def show
+    @booking = Booking.find(params[:id])
+  end
+
   def new
     @puppy = Puppy.find(params[:puppy_id])
     @booking = Booking.new
