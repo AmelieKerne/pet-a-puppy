@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2020_08_19_140029) do
 
   # These are extensions that must be enabled in order to support this database
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(version: 2020_08_19_140029) do
     t.date "end_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "accepted"
     t.index ["puppy_id"], name: "index_bookings_on_puppy_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
