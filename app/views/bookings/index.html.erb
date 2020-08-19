@@ -1,0 +1,13 @@
+<div class="container">
+<h1>Here's an overviews of all you <strong>booked</strong> pet-a-puppy sessions</h1>
+
+
+<p><% @bookings.each do |booking| %>
+  <div class="cards">
+    You'll meet : <%= booking.puppy.name %>
+    Your pet a puppy session is taking place on <%= booking.start_date %> until the <%= booking.end_date %>
+  </div>
+<% end %>
+</p>
+
+</div>

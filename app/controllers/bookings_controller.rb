@@ -1,4 +1,13 @@
 class BookingsController < ApplicationController
+  def index
+    @bookings = policy_scope(Booking)
+  end
+
+  def show
+    @booking = Booking.find(params[:id])
+    authorize @booking
+  end
+
   def new
     @puppy = Puppy.find(params[:puppy_id])
     @booking = Booking.new
