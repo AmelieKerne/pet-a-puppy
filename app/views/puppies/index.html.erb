@@ -3,7 +3,7 @@
 
 <%  @puppies.each do |puppy| %>
     <%= link_to puppy.name, puppy_path(puppy) %>
-    <%= image_path 'cocktails.jpg' %>
+
     <%= puppy.description %>
     <%= puppy.price %>
 <% end %>
@@ -12,3 +12,9 @@
 <% if policy(Puppy).create? %>
   <%= link_to "New puppy", new_puppy_path %>
 <% end %>
+
+<div id="map"
+     style="width: 50%; height: 400px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
