@@ -19,6 +19,7 @@ class BookingsController < ApplicationController
     @puppy = Puppy.find(params[:puppy_id])
     @booking = Booking.new(booking_params)
     @booking.user = current_user
+    @booking.accepted = false
     authorize @booking
     @booking.puppy = @puppy
     if @booking.save!
@@ -27,6 +28,12 @@ class BookingsController < ApplicationController
       render :new
     end
   end
+
+  # def update
+  #   @booking = Booking.find(params[:id])
+  #   @booking.accepted = true
+  #   authorize @booking
+  # end
 
   private
 
