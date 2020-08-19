@@ -1,8 +1,11 @@
 <h1><%= @puppy.name %></h1>
 
+  <p><%= @puppy.description %></p>
+  <p><%= @puppy.price %></p>
+
 <%= link_to "Back to all puppies", root_path %>
 
-<% if policy(Puppy).create? %>
-  <%= link_to "New puppy", new_puppy_path %>
-<% end %>
+<!-- if policy(Puppy).create?
+link_to "Book this puppy", new_booking_path
+end -->
 
