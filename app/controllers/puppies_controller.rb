@@ -39,7 +39,7 @@ before_action :set_puppy, only: [:show, :edit, :update, :destroy]
 
   def destroy
     @puppy.destroy
-    redirect_to root
+    redirect_to root_path
   end
 
   private
