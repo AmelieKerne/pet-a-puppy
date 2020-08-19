@@ -4,7 +4,7 @@ before_action :set_puppy, only: [:show, :edit, :update, :destroy]
   def index
     @puppies = policy_scope(Puppy)
     @puppies = Puppy.geocoded
-    @puppies - Puppy.where.not(latitude: nil, longitude: nil)
+    @puppies = Puppy.where.not(latitude: nil, longitude: nil)
     @markers = @puppies.map do |puppy|
       {
         lat: puppy.latitude,
@@ -60,5 +60,4 @@ before_action :set_puppy, only: [:show, :edit, :update, :destroy]
   def puppy_params
     params.require(:puppy).permit(:name, :description, :price, :photo, :address)
   end
-
 end
