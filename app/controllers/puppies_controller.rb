@@ -1,5 +1,5 @@
 class PuppiesController < ApplicationController
-before_action :set_puppy, only: [:show, :edit, :update, :destroy]
+  before_action :set_puppy, only: [:show, :edit, :update, :destroy]
 
   def index
     @puppies = policy_scope(Puppy)
@@ -42,7 +42,7 @@ before_action :set_puppy, only: [:show, :edit, :update, :destroy]
     if @puppy.update(puppy_params)
       redirect_to puppy_path(@puppy)
     else
-        render :edit
+      render :edit
     end
   end
 

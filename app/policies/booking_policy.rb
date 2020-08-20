@@ -1,8 +1,7 @@
 class BookingPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all #sichtbar fuer alle(auch nicht)
-      scope.where(user: user)
+      scope.all
     end
   end
 
