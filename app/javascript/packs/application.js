@@ -19,7 +19,9 @@ require("channels")
 import { initMapbox } from './map';
 
 document.addEventListener('turbolinks:load', () => {
+  setTimeout(() => {
   initMapbox();
+  },200)
 })
 
 

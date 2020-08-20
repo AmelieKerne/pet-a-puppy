@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
 require "open-uri"
 
 puts "creating users"
@@ -28,12 +29,15 @@ puts "creating puppies"
    puppy = Puppy.new(
     name: Faker::Superhero.name,
     description: Faker::ChuckNorris.fact,
-    price: Faker::Commerce.price.to_i,
+    price: rand(1..5),
     user: User.first,
     address: "Berlin",
   )
-  puppy.photo.attach(io: file, filename: "puppy_profile_picture.jpg", content_type: 'image/jpg')
   puppy.save!
+  puppy.photo.attach(io: file, filename: "puppy_profile_picture.jpg", content_type: 'image/jpg')
+
 end
 
 puts "puppies created"
+
+
