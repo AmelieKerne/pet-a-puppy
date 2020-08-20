@@ -19,11 +19,10 @@ class PuppyPolicy < ApplicationPolicy
   end
 
   def update?
-    user = record.user
+    @user = @record.user
   end
 
   def destroy?
-    user = record.user
+    @user = @record.user
   end
-
 end
