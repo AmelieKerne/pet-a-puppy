@@ -1,4 +1,9 @@
+<h1>Thank you for your booking request with <%= @booking.puppy.name %></h1>
 <p>
-You'll meet : <%= @booking.puppy.name %>
 Your pet-a-puppy session is taking place on <%= @booking.start_date %> until the <%= @booking.end_date %>
+We'll inform you when your session is confirmed by the dog owner.
 </p>
+
+
+<p>Click here for an <%= link_to 'overview of your bookings', bookings_path %>.</p>
+
