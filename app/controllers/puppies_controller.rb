@@ -3,9 +3,7 @@ class PuppiesController < ApplicationController
 
   def index
     @puppies = policy_scope(Puppy)
-    @puppies = Puppy.geocoded
-    @puppies = Puppy.where.not(latitude: nil, longitude: nil)
-    @markers = @puppies.map do |puppy|
+    @markers = @puppies.geocoded.map do |puppy|
       {
         lat: puppy.latitude,
         lng: puppy.longitude,

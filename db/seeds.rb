@@ -5,22 +5,36 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-require 'faker'
-puts "Cleaning database..."
-Puppy.destroy_all
+require "open-uri"
 
-puts "Creating some puppies..."
-8.times do
-  puppy = Puppy.create(
-    name: Faker::FunnyName.two_word_name,
+puts "creating users"
+Booking.destroy_all
+Puppy.destroy_all
+User.destroy_all
+2.times do
+  user = User.new(
+    #name: Faker::FunnyName.name,
+    email: Faker::Internet.email,
+    password: "123456",
+  )
+  user.save!
+end
+puts "users created"
+
+puts "creating puppies"
+
+10.times do
+  file = URI.open('https://alop.org/wp-content/uploads/2014/12/happy-dog.jpg')
+   puppy = Puppy.new(
+    name: Faker::Superhero.name,
+    description: Faker::ChuckNorris.fact,
     price: rand(1..5),
-    description: Faker::Creature::Dog.meme_phrase,
-    user_id: 1
-       )
-  puts "Puppy with id #{puppy.id} was created"
-  puppy.photo.attach(io:
-    File.open(File.join(Rails.root,'app/assets/images/puppy.jpeg')), filename: 'puppy')
+    user: User.first,
+    address: "Berlin",
+  )
+  puppy.photo.attach(io: file, filename: "puppy_profile_picture.jpg", content_type: 'image/jpg')
+  puppy.save!
 end
 
+puts "puppies created"
 
-puts "Created #{Puppy.count} puppies"
