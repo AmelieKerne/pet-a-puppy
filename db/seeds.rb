@@ -33,8 +33,9 @@ puts "creating puppies"
     user: User.first,
     address: "Berlin",
   )
-  puppy.photo.attach(io: file, filename: "puppy_profile_picture.jpg", content_type: 'image/jpg')
   puppy.save!
+  puppy.photo.attach(io: file, filename: "puppy_profile_picture.jpg", content_type: 'image/jpg')
+
 end
 
 puts "puppies created"
