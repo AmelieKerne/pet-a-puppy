@@ -1,21 +1,25 @@
 <div class="container">
-<h1>Meet <%= @puppy.name %> 🐶 </h1>
+<h1>Get to know <strong><%= @puppy.name %></strong> 🐶 </h1>
 
   <div class="flex-basis">
 
         <div class="card" style="width: 80rem;">
-          <div class="card-body">
-              <p class="card-text"> Get to know <%= @puppy.name %>:<%= cl_image_tag @puppy.photo.key, height: 300, width: 400, crop: :fill %>
-                <%= @puppy.description %> </p>
-              <p><%= @puppy.name %> costs: <%= @puppy.price %> karma points </p>
+          <div class="card-product">
+            <%= cl_image_tag @puppy.photo.key, height: 300, width: 400, crop: :fill, class: "image_rounded" %>
+            <div class="card-product-infos">
+              <p><%= @puppy.description %> </p>
+              <p>An hour with <%= @puppy.name %> costs: <strong><%= @puppy.price %> karma points</strong> </p>
+              <div class="CTA">
+                <%= link_to "Book a session now", new_puppy_booking_path(@puppy), class: "btn btn-flat" %>
+              </div>
+            </div>
           </div>
         </div>
   </div>
 
-<%= link_to "Book a session now", new_puppy_booking_path(@puppy), class: "btn btn-flat" %>
 
-<%= link_to "Back to all puppies", root_path %>
-
+<br>
+<%= link_to "Back to all puppies", root_path, class: "btn btn-index" %>
 </div>
 <!-- if policy(Puppy).create?
 link_to "Book this puppy", new_booking_path
