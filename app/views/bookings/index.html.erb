@@ -1,26 +1,51 @@
 <div class="container">
-<h1>Here's an overviews of all you <strong>booked</strong> pet-a-puppy sessions</h1>
 
 
 
-<p><% @bookings.each do |booking| %>
-  <div class="cards">
-    <%= booking.id %>
-    You'll meet : <%= booking.puppy.name %>
-    Your pet a puppy session is taking place on <%= booking.start_date %> until the <%= booking.end_date %>
-    <% if booking.accepted == nil  %>
-      <p> Pending ... </p>
-    <% elsif booking.accepted == false %>
-      <p>Sorry, your booking request got rejected. Find <%= link_to 'more puppies here' , puppies_path  %></p>
-      <% else %>
-      <p>Yay, you booked a pet-a-puppy session!</p>
+
+<div class="container">
+
+
+<% @owner_puppy.each do |puppy| %>
+  <% if puppy.bookings.count > 0 %>
+    <div class="cards">
+
+    <p> <%= puppy.name %> </p>
+      <% puppy.bookings.each do |booking|  %>
+
+      <%= booking.start_date %>
+      <%= booking.end_date %>
+        <% if booking.accepted == nil  %>
+          <p> Do you want to accept this booking? </p>
+          <%= link_to 'Yes, accept!', accept_booking_path(booking), class: "btn btn-outline-success btn-sm"%>
+          <%= link_to 'No, reject!', reject_booking_path(booking), class: "btn btn-outline-warning btn-sm" %>
+        <% elsif booking.accepted == false %>
+          <p>Rejected!</p>
+        <% else %>
+          <p>Confirmed!</p>
+        <% end %>
+
+     <% end %>
   <% end %>
- <%= link_to 'accept', accept_booking_path(booking), class: "btn btn-primary"%>
- <%= link_to 'reject', reject_booking_path(booking), class: "btn btn-warning" %>
-  </div>
 
 <% end %>
-
-</p>
-
 </div>
+
+  </div>
+  <div class="card">
+    <% @current_user_bookings.each do |booking| %>
+    <%= booking.puppy.name %>
+    <%= booking.start_date %>
+    <%= booking.end_date %>
+        <% if booking.accepted == nil  %>
+          <p> Pending ... </p>
+        <% elsif booking.accepted == false %>
+          <p>Sorry, your booking request got rejected. Find <%= link_to 'more puppies here' , puppies_path  %></p>
+        <% else %>
+          <p>Yay, you booked a pet-a-puppy session!</p>
+        <% end %>
+    <% end %>
+  </div>
+  </div>
+
+

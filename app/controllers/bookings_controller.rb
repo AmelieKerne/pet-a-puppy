@@ -1,6 +1,10 @@
 class BookingsController < ApplicationController
   def index
     @bookings = policy_scope(Booking)
+    # @bookings = booking.puppy.user
+    @owner_puppy = Puppy.where(user_id: current_user.id)
+    # @owner_bookings = @owner_puppy.bookings
+    @current_user_bookings = Booking.where(user_id: current_user.id)
   end
 
   def show
