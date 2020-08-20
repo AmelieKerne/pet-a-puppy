@@ -24,7 +24,7 @@ puts "users created"
 puts "creating puppies"
 
 10.times do
-  file = URI.open('https://alop.org/wp-content/uploads/2014/12/happy-dog.jpg')
+  file = URI.open('https://pupbox.com/wp-content/themes/pupbox-jb/assets/blog.v2/posts-by-age/puppy-running2.jpg')
    puppy = Puppy.new(
     name: Faker::Superhero.name,
     description: Faker::ChuckNorris.fact,
