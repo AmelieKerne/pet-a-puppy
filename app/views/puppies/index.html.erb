@@ -3,20 +3,28 @@ style= "background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url(
   <div class="container">
     <h1>Welcome to Pet-a-Puppy</h1>
     <p>Rent a puppy to have a relaxing time. At a location close to you</p>
-    <div class="button-banner"><a class="btn btn-warning" href="#">Discover</a></div>
+    <div class="button-banner"><a class="btn btn-warning" href="#btn">Discover</a></div>
   </div>
 </div>
 
 
-<div class="container-map">
-  <div class="cards pt-3 ">
+<div id ="btn" class="container-map">
+  <div class="cards ">
       <% @puppies.each do |puppy| %>
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path puppy.photo.key %>)">
-           <%= link_to puppy.name, puppy_path(puppy) %>
-        </div>
+
+    <div class="card">
+      <%= cl_image_tag puppy.photo.key, class: "card-img-top"%>
+      <div class="card-body">
+       <div class="d-flex justify-content-between align-items-center"> <h2><%= puppy.name %> </h2>
+          <h5>€<%= puppy.price %> </h5>
+          </div>
+        <p class="card-text"><%= puppy.description%></p>
+        <%= link_to "view details", puppy_path(puppy), class: "btn btn-warning" %>
+      </div>
+    </div>
+
       <% end %>
   </div>
-
 
 <div id="map"
      data-markers="<%= @markers.to_json %>"
