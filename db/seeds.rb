@@ -28,7 +28,7 @@ puts "creating puppies"
    puppy = Puppy.new(
     name: Faker::Superhero.name,
     description: Faker::ChuckNorris.fact,
-    price: Faker::Commerce.price.to_i,
+    price: rand(1..5),
     user: User.first,
     address: "Berlin",
   )
@@ -37,3 +37,4 @@ puts "creating puppies"
 end
 
 puts "puppies created"
+
