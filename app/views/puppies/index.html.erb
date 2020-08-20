@@ -1,53 +1,30 @@
-<div class="banner"
+<div class="banner text-center"
 style= "background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url('<%= image_path "puppies.jpg" %>');">
   <div class="container">
     <h1>Welcome to Pet-a-Puppy</h1>
     <p>Rent a puppy to have a relaxing time. At a location close to you</p>
-    <a class="btn btn-warning" href="#">Discover</a>
+    <div class="button-banner"><a class="btn btn-warning" href="#">Discover</a></div>
   </div>
 </div>
 
 
-
-    <div class="cards">
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-    Breakfast
-  </div>
-
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg)">
-    Lunch
-  </div>
-
-  <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg)">
-    Dinner
-  </div>
-</div>
-
-
-
-
-
-
-
-    <div class="row">
-      <div class="col-lg-3">
-        <div class="card" style="width: 18rem;">
-          <div class="card-body">
-              <p class="card-text"> <%  @puppies.each do |puppy| %>
-                  <%= link_to puppy.name, puppy_path(puppy) %>
-                  <!-- <%= image_path '' %> -->
-              <% end %></p>
-          </div>
+<div class="container-map">
+  <div class="cards pt-3 ">
+      <% @puppies.each do |puppy| %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path puppy.photo.key %>)">
+           <%= link_to puppy.name, puppy_path(puppy) %>
         </div>
-      </div>
-    </div>
+      <% end %>
+  </div>
 
 
 <div id="map"
-     style="width: 50%; height: 400px;"
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
+</div>
+
+
 
   <% if policy(Puppy).create? %>
     <%= link_to "New puppy", new_puppy_path %>
@@ -55,5 +32,24 @@ style= "background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url(
 </div>
 
 
-<!-- <cl image_tag> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
