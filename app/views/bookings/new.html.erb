@@ -1,7 +1,7 @@
 <div class="container">
 
 <h1>Book your pet-a-puppy session</h1>
-
+<div class="date-form">
 <%= simple_form_for [ @puppy, @booking ] do |f| %>
 <div class="row">
 <%= f.input :start_date, as: :date, html5: true %>
