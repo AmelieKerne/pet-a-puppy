@@ -43,8 +43,8 @@ addresses = [
 21.times do |i|
   file = URI.open('https://pupbox.com/wp-content/themes/pupbox-jb/assets/blog.v2/posts-by-age/puppy-running2.jpg')
    puppy = Puppy.new(
-    name: Faker::Superhero.name,
-    description: Faker::ChuckNorris.fact,
+    name: Faker::Creature::Dog.name,
+    description: "Nice and cute puppy. Very sociable, he likes playing with other dogs.",
     price: rand(1..5),
     user: User.find(rand(User.first.id..User.first.id + 2)),
     address: addresses[i],

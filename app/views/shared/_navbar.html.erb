@@ -1,24 +1,28 @@
+
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  
   <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "logo.png" %>
     <% end %>
-
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
-
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <%= link_to "Home", puppies_path , class: "nav-link" %>
-      </li>
+      <% if user_signed_in? %>
+        <li class="nav-item active">
+          <%= link_to current_user.email.scan(/\w+/).first.capitalize, puppies_path , class: "nav-link" %>
+        </li>
+      <% end %>
       <li class="nav-item">
         <%= link_to "My dashboard", bookings_path , class: "nav-link" %>
       </li>
+      <% email_to_user = { 'amelie@example.com' => 'AmelieKerne', 'lena@example.com' => 'lenasophiea', 'mohit@example.com' => 'raoz87'} %>
       <li class="nav-item dropdown">
-        <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% if current_user.nil?  %>
+        <%= image_tag "https://kitt.lewagon.com/placeholder/users/ClaireDMT", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% else %>
+        <%= image_tag "https://kitt.lewagon.com/placeholder/users/#{email_to_user[current_user.email]}", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+      <% end %>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <%= link_to "Login", user_session_path, class: "dropdown-item" %>
           <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
