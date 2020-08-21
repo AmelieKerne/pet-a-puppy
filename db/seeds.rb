@@ -15,6 +15,7 @@ names.each do |name|
 end
 
 puts "#{User.count} users created"
+
 puts "Creating puppies"
 addresses = [
   "Rudi-Dutschke-Straße 26, 10969 Berlin",
@@ -40,6 +41,7 @@ addresses = [
   "Nikolaikirchplatz, 10178 Berlin",
   "Breitscheidplatz, 10789 Berlin"
 ]
+
 21.times do |i|
   file = URI.open('https://pupbox.com/wp-content/themes/pupbox-jb/assets/blog.v2/posts-by-age/puppy-running2.jpg')
    puppy = Puppy.new(
