@@ -12,8 +12,9 @@
         </div>
   </div>
 
-<%= link_to "Book a session now", new_puppy_booking_path(@puppy), class: "btn btn-flat" %>
-
+<% if current_user != @puppy.user %>
+  <%= link_to "Book a session now", new_puppy_booking_path(@puppy), class: "btn btn-flat" %>
+<% end %>
 <%= link_to "Back to all puppies", root_path %>
 
 </div>
