@@ -6,20 +6,22 @@
   <div class="card-trip-infos">
     <div>
       <h2> <%= @puppy.name %> </h2>
+      <br>
       <p> <%= @puppy.description %></p>
+      <% if current_user != @puppy.user %>
       <%= link_to "Book a session now", new_puppy_booking_path(@puppy), class: "btn btn-warning" %>
+      <% end %>
     </div>
     <h2 class="card-trip-pricing">€<%=@puppy.price%>  </h2>
 
+     </div>
+    </div>
   </div>
-</div>
-</div>
-</div>
-
-
+  </div>
 
 <br>
 <div class="d-flex justify-content-center"> <%= link_to "Back to all puppies", root_path, class: "btn btn-outline-warning" %></div>
+
 
 
 

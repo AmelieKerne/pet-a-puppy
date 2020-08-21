@@ -26,7 +26,7 @@ class BookingsController < ApplicationController
     authorize @booking
     @booking.puppy = @puppy
     if @booking.save!
-      redirect_to puppy_path(@puppy)
+      redirect_to booking_path(@booking)
     else
       render :new
     end

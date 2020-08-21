@@ -1,15 +1,16 @@
-<div class="container">
-
-<h1>Book your pet-a-puppy session</h1>
-
-<%= simple_form_for [ @puppy, @booking ] do |f| %>
-<div class="row">
+<div class="container bg-white rounded text-warning pt-3 mt-3">
+<h1 class="text-center">Book your pet-a-puppy session with <%= @puppy.name %></h1>
+<div class="d-flex justify-content-center p-5">
+<%= simple_form_for([ @puppy, @booking ]) do |f| %>
+<div class="row form-inline text-secondary">
 <%= f.input :start_date, as: :date, html5: true %>
 
-</div>
-<div class="row">
 <%= f.input :end_date, as: :date, html5: true %>
-</div>
-<%= f.submit class: "btn btn-primary" %>
+
+<%= f.submit class: "btn btn-warning text-white" %>
 <% end %>
 </div>
+</div>
+<%= link_to " ↪ Back to all puppies", root_path %>
+</div>
+
