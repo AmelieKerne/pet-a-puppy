@@ -3,23 +3,22 @@
   grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
   flex-grow: 1;
-
 }
 
-.card-body{
+.card-body {
   display: flex;
-  flex-direction: column;
+   flex-direction: column;
   p {
     flex-grow: 1;
   }
-
+}
   .btn-warning {
     align-self: center;
     width: fit-content;
     padding-left: 32px;
     padding-right: 32px;
   }
-}
+
 
 .container-map {
   display: grid;
@@ -28,7 +27,6 @@
   padding-top: 24px;
 }
 
-
 .card-product {
   overflow: hidden;
   height: 120px;
@@ -36,7 +34,6 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
-  border-radius: 8px;
 }
 
 .card-product img {
@@ -61,5 +58,47 @@
 
 .card-product .card-product-infos {
   padding: 16px;
+}
+
+
+.card-trip {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  height:auto;
+}
+
+.card-trip > img {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-trip h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-trip p {
+  font-size: 18px;
+  opacity: .7;
+  margin: 10;
+}
+
+
+
+.card-trip .card-trip-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.card-trip-infos .card-trip-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
 }
 
