@@ -46,7 +46,7 @@ addresses = [
   file = URI.open('https://pupbox.com/wp-content/themes/pupbox-jb/assets/blog.v2/posts-by-age/puppy-running2.jpg')
    puppy = Puppy.new(
     name: Faker::Creature::Dog.name,
-    description: "Nice and cute puppy. Very sociable, he likes playing with other dogs.",
+    description: "Nice, cute and lovely uppy. Usually very sociable, #{Puppy.name} likes playing with other animals but can get nervous with kids if they steal him the show! Small and light, #{Puppy.name} can easily come with you for all your next adventures, let it be just next to your door, or to explore other areas. #{Puppy.name} is used to travel by bike, car and bus. Be careful with the train, #{Puppy.name} gets sick then! In short: book #{Puppy.name}, be happy :D",
     price: rand(1..5),
     user: User.find(rand(User.first.id..User.first.id + 2)),
     address: addresses[i],
