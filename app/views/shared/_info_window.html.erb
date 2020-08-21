@@ -1,2 +1,4 @@
-<h2><%= puppy.name %></h2>
+<h2 class="text-warning"><%= link_to puppy.name, puppy_path(puppy) %></h2>
+<p><%= cl_image_tag puppy.photo.key, class: "card-img-top"%></p>
 <p><%= puppy.address %></p>
+
