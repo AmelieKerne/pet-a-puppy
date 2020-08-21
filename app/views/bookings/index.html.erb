@@ -2,38 +2,41 @@
 <%# if current_user == @current_user_bookings %>
   <% @owner_puppies.each do |puppy| %>
   <% if puppy.bookings.count > 0 %>
+  <h1>Here are <%= puppy.name %>bookings:</h1>
     <div class="card-confirm">
 
       <% puppy.bookings.each do |booking|  %>
           <div class="card-product my-3">
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+            <%= cl_image_tag booking.puppy.photo.key %>
             <div class="card-product-infos">
-              <h2><%= puppy.name %></h2>
+              <h2><%= link_to booking.puppy.name, puppy_path(booking.puppy) %></h2>
               <p>The session will start on the <%= booking.start_date %> until the <%= booking.end_date %></p>
               <% if booking.accepted == nil  %>
                   <p> Do you want to accept this booking? </p>
                   <%= link_to 'Yes, accept!', accept_booking_path(booking), class: "btn btn-outline-success btn-sm"%>
                   <%= link_to 'No, reject!', reject_booking_path(booking), class: "btn btn-outline-warning btn-sm" %>
-                  <% elsif booking.accepted == false %>
+                <% elsif booking.accepted == false %>
                   <p>You <strong>rejected</strong> this session!</p>
-              <% else %>
+                <% else %>
                   <p>You <strong>confirmed</strong> this session!</p>
               <% end %>
+               </div>
             </div>
-          </div
      <% end %>
-  <% end %>
+      </div>
     <% end %>
-  </div>
+    <% end %>
+
 
   <%# else %>
+  <h1>See your booked sessions:</h1>
     <div class="card-confirm">
       <div class="container">
       <% @current_user_bookings.each do |booking| %>
         <div class="card-product my-3">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <%= cl_image_tag booking.puppy.photo.key %>
           <div class="card-product-infos">
-            <h2><%= booking.puppy.name %></h2>
+            <h2><%= link_to booking.puppy.name, puppy_path(booking.puppy) %></h2>
             <p>You pet-a-puppy session is from the <%= booking.start_date %> to the <%= booking.end_date %></p>
               <% if booking.accepted == nil  %>
                   <p> Pending ... </p>

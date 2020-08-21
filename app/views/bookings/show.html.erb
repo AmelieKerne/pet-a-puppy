@@ -1,9 +1,19 @@
-<h1>Thank you for your booking request for <%= @booking.puppy.name %></h1>
-<p>
-Your pet-a-puppy session is taking place on <%= @booking.start_date %> until the <%= @booking.end_date %>
-We'll inform you when your session is confirmed by the dog owner.
-</p>
+<div class="d-flex justify-content-center row ">
+  <div class="col-sm-12 col-lg-6 " >
+<div class="card-trip mt-3">
+ <%= cl_image_tag @booking.puppy.photo.key,class: "card-img-top" %>
+  <div class="card-trip-infos">
+    <div>
+      <h2> Thank you for your booking request for <%= @booking.puppy.name %></h2>
+      <br>
+      <p> We'll inform you when your session is confirmed by the dog owner.</p>
 
+      <%= link_to "My dashboard", bookings_path, class: "btn btn-warning" %>
+    </div>
+    <h2 class="card-trip-pricing">€<%=@booking.puppy.price%>  </h2>
 
-<p>Click here for an <%= link_to 'overview of your bookings', bookings_path %>.</p>
+  </div>
+</div>
+</div>
+</div>
 
