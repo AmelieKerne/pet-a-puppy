@@ -48,7 +48,7 @@ addresses = [
     name: Faker::Creature::Dog.name,
     description: "Nice, cute and lovely puppy. Usually very sociable, #{Puppy.name} likes playing with other animals but can get nervous with kids if they steal him the show! Small and light, #{Puppy.name} can easily come with you for all your next adventures, let it be just next to your door, or to explore other areas. #{Puppy.name} is used to travel by bike, car and bus. Be careful with the train, #{Puppy.name} gets sick then! In short: book #{Puppy.name}, be happy :D",
     price: rand(1..5),
-    user: User.find(rand(User.first.id..User.first.id + 2)),
+    user: User.first,
     address: addresses[i],
   )
   puppy.save!
